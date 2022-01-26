@@ -165,7 +165,7 @@
   "${ModID}:InquisitorPower": {
     "NAME": "Inquisitor",
     "DESCRIPTIONS": [
-      "Zarstrasz applies #yJudgement to the player, #yJudgment will grant Zarstrasz up to #b2 additional actions each turn."
+      "Whenever Zarstrasz deals #b%d unblocked attack damage, it gains an additional action every turn for the rest of combat. (Up to 2)"
     ]
   },
   "${ModID}:JudgementPower": {
@@ -308,13 +308,13 @@
   "${ModID}:Counter": {
     "NAME": "Counter",
     "DESCRIPTIONS": [
-      "Whenever this creature takes less than #b%d unblocked attack damage, it attacks for #b%d."
+      "Whenever this creature takes less than #b%d unblocked damage from an attack, it attacks for #b%d."
     ]
   },
   "${ModID}:RainbowPower": {
     "NAME": "Rainbow Power",
     "DESCRIPTIONS": [
-      "Whenever you play a card, gains a buff depending on the type. NL #rAttack: #b1 #yStrength NL #gSkill: #b4 #yTemp. #yHP NL #bPower: #b1 #yBuffer"
+      "Whenever you play a card, gains a buff depending on the type. NL #rAttack: #b%d Temporary #yStrength NL #gSkill: #b%d #yTemporary #yHP NL #bPower: #b%d #yBuffer"
     ]
   },
   "${ModID}:ExtraHitsPower": {

@@ -4,7 +4,6 @@ import BattleTowers.room.BattleTowerRoom;
 import BattleTowers.util.UC;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -17,6 +16,7 @@ import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
+import static BattleTowers.BattleTowers.logger;
 import static BattleTowers.BattleTowers.makeID;
 
 public class Torch extends CustomRelic implements CustomSavable<CardSave> {
@@ -51,10 +51,10 @@ public class Torch extends CustomRelic implements CustomSavable<CardSave> {
             if (AbstractDungeon.getCurrRoom() instanceof BattleTowerRoom) {
                 flash();
                 UC.atb(new RelicAboveCreatureAction(UC.p(), this));
-                UC.atb(new MakeTempCardInDrawPileAction(card.makeCopy(), 2, true, true));
+                UC.atb(new MakeTempCardInDrawPileAction(card.makeStatEquivalentCopy(), 2, true, true));
             }
         } else {
-            System.err.print("Err: Torch card is null\n");
+            logger.warn("Torch relic card is null.");
         }
     }
 

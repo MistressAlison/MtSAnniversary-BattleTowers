@@ -1,24 +1,23 @@
 package BattleTowers;
 
 import BattleTowers.RazIntent.CustomIntent;
-import BattleTowers.cardmod.SlimyCardmod;
-import BattleTowers.cards.*;
+import BattleTowers.cardmods.SlimyCardmod;
 import BattleTowers.events.*;
-import BattleTowers.events.GentlemanEvent;
 import BattleTowers.monsters.*;
 import BattleTowers.monsters.CardboardGolem.CardboardGolem;
 import BattleTowers.monsters.chess.queen.Queen;
 import BattleTowers.monsters.chess.queen.customintents.QueenDrainIntent;
 import BattleTowers.monsters.executiveslime.ExecutiveSlime;
 import BattleTowers.monsters.executiveslime.Slimeling;
-import BattleTowers.relics.*;
 import BattleTowers.subscribers.PetrifyingGazeApplyPowerSubscriber;
 import BattleTowers.subscribers.TriggerSlimeFilledRoomPowerPostExhaustSubscriber;
 import BattleTowers.util.KeywordWithProper;
 import BattleTowers.util.TextureLoader;
+import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
+import basemod.abstracts.CustomRelic;
 import basemod.helpers.CardBorderGlowManager;
 import basemod.helpers.CardModifierManager;
 import basemod.helpers.RelicType;
@@ -41,7 +40,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.exordium.Cultist;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -194,7 +192,8 @@ public class BattleTowers implements
         BaseMod.addMonster(Gorgon.ID, (BaseMod.GetMonster) Gorgon::new);
         BaseMod.addMonster(GigaSlime.ID, (BaseMod.GetMonster) GigaSlime::new);
         BaseMod.addMonster(ItozusTheWindwalker.ID,(BaseMod.GetMonster) ItozusTheWindwalker::new);
-        BaseMod.addMonster(ZastraszTheJusticar.ID,(BaseMod.GetMonster) ZastraszTheJusticar::new);
+        BaseMod.addMonster(ZastraszTheJusticar.ID, (BaseMod.GetMonster) ZastraszTheJusticar::new);
+        BaseMod.addMonster(AspiringChampion.ID, (BaseMod.GetMonster) AspiringChampion::new);
 
         //Bosses
         BaseMod.addMonster(CardboardGolem.ID, (BaseMod.GetMonster) CardboardGolem::new);
@@ -352,31 +351,11 @@ public class BattleTowers implements
 
     @Override
     public void receiveEditRelics() {
-        BaseMod.addRelic(new CardboardHeart(), RelicType.SHARED);
-        BaseMod.addRelic(new BucketOfSlime(), RelicType.SHARED);
-        BaseMod.addRelic(new OttosDeck(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerSnecko(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerCultist(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerLouse(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerNob(), RelicType.SHARED);
-        BaseMod.addRelic(new Torch(), RelicType.SHARED);
-        UnlockTracker.markRelicAsSeen(Torch.ID);
-        BaseMod.addRelic(new Lucky(), RelicType.SHARED);
-        BaseMod.addRelic(new IronPotHelmet(), RelicType.SHARED);
-        BaseMod.addRelic(new DijinnLamp(), RelicType.SHARED);
-        BaseMod.addRelic(new CursedDoll(), RelicType.SHARED);
-        BaseMod.addRelic(new JadeIdol(), RelicType.SHARED);
-        BaseMod.addRelic(new RubyFragment(), RelicType.SHARED);
-        BaseMod.addRelic(new PromiseOfGold(), RelicType.SHARED);
-        BaseMod.addRelic(new ClericsBlessing(), RelicType.SHARED);
-        BaseMod.addRelic(new ArmorersMask(), RelicType.SHARED);
-        BaseMod.addRelic(new AlphabetSoup(), RelicType.SHARED);
-        BaseMod.addRelic(new GorgonHead(), RelicType.SHARED);
-        BaseMod.addRelic(new SlimeFilledFlask(), RelicType.SHARED);
-        BaseMod.addRelic(new SentryOrb(), RelicType.SHARED);
-        BaseMod.addRelic(new SweatyArmband(), RelicType.SHARED);
-        BaseMod.addRelic(new QueensPawn(), RelicType.SHARED);
-        BaseMod.addRelic(new ScaryNail(), RelicType.SHARED);
+        new AutoAdd("BattleTowers")
+                .packageFilter("BattleTowers.relics")
+                .any(CustomRelic.class, (info, r) -> {
+                    BaseMod.addRelic(r, RelicType.SHARED);
+                });
     }
         
     public static String removeModId(String id) {
@@ -390,37 +369,12 @@ public class BattleTowers implements
 
     @Override
     public void receiveEditCards() {
-        BaseMod.addRelic(new CardboardHeart(), RelicType.SHARED);
-        BaseMod.addRelic(new BucketOfSlime(), RelicType.SHARED);
-        BaseMod.addRelic(new OttosDeck(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerSnecko(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerCultist(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerLouse(), RelicType.SHARED);
-        BaseMod.addRelic(new WarBannerNob(), RelicType.SHARED);
-        BaseMod.addRelic(new Torch(), RelicType.SHARED);
-        UnlockTracker.markRelicAsSeen(Torch.ID);
-        BaseMod.addRelic(new Lucky(), RelicType.SHARED);
-        BaseMod.addRelic(new IronPotHelmet(), RelicType.SHARED);
-        BaseMod.addRelic(new DijinnLamp(), RelicType.SHARED);
-        BaseMod.addRelic(new CursedDoll(), RelicType.SHARED);
-        BaseMod.addRelic(new JadeIdol(), RelicType.SHARED);
-        BaseMod.addRelic(new RubyFragment(), RelicType.SHARED);
-        BaseMod.addRelic(new PromiseOfGold(), RelicType.SHARED);
-        BaseMod.addRelic(new ClericsBlessing(), RelicType.SHARED);
-        BaseMod.addRelic(new ArmorersMask(), RelicType.SHARED);
-        BaseMod.addRelic(new AlphabetSoup(), RelicType.SHARED);
-        BaseMod.addRelic(new GorgonHead(), RelicType.SHARED);
-        BaseMod.addRelic(new SlimeFilledFlask(), RelicType.SHARED);
-        BaseMod.addRelic(new SentryOrb(), RelicType.SHARED);
-        BaseMod.addCard(new WindStrike());
-        BaseMod.addCard(new PawnsAdvance());
-        BaseMod.addCard(new KnightsManeuver());
-        BaseMod.addCard(new BishopsPrayer());
-        BaseMod.addCard(new RooksCharge());
-        BaseMod.addCard(new KingsCommand());
-        BaseMod.addCard(new QueensGrace());
-
+        new AutoAdd("BattleTowers")
+                .packageFilter("BattleTowers.cards")
+                .setDefaultSeen(true)
+                .cards();
     }
+
     @Override
     public void receiveAddAudio() {
         BaseMod.addAudio(WHARGH_KEY, WHARGH_OGG);

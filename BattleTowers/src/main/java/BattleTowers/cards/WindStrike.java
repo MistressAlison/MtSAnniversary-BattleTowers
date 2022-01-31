@@ -22,7 +22,7 @@ public class WindStrike extends CustomCard {
     public static final String ID = makeID(WindStrike.class.getSimpleName());
     public static final String NAME;
     public static final String DESCRIPTION;
-    public static final String IMG_PATH = makeCardPath("PawnsAdvance.png");
+    public static final String IMG_PATH = makeCardPath("WindStrike.png");
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF_AND_ENEMY;
@@ -38,8 +38,8 @@ public class WindStrike extends CustomCard {
 
     public WindStrike() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
-        baseDamage = damage = 4;
-        baseBlock = block = 4;
+        baseDamage = damage = 5;
+        baseBlock = block = 5;
         magicNumber = baseMagicNumber = 3;
     }
 
@@ -54,14 +54,12 @@ public class WindStrike extends CustomCard {
         return new WindStrike();
     }
 
-    @Override
-    public boolean canUpgrade() {
-        return false;
-    }
-
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
+            upgradeDamage(3);
+            upgradeBlock(3);
+            upgradeMagicNumber(3);
         }
     }
     public void applyPowers() {

@@ -19,7 +19,7 @@ public class RazorWind extends CustomCard {
     public static final String ID = makeID(RazorWind.class.getSimpleName());
     public static final String NAME;
     public static final String DESCRIPTION;
-    public static final String IMG_PATH = makeCardPath("PawnsAdvance.png");
+    public static final String IMG_PATH = makeCardPath("WindStrike.png");
     private static final CardType TYPE = CardType.ATTACK;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -37,8 +37,8 @@ public class RazorWind extends CustomCard {
 
     public RazorWind() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, TYPE, CardColor.COLORLESS, RARITY, TARGET);
-        baseDamage = damage = 4;
-        baseBlock = block = 4;
+        baseDamage = damage = 5;
+        baseBlock = block = 5;
         magicNumber = baseMagicNumber = 3;
         purgeOnUse = true;
     }
